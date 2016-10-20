@@ -11,8 +11,8 @@ require_once __DIR__ .'/Facebook/autoload.php';
 
 // Create our Application instance (replace this with your appId and secret).
 $facebook = new Facebook\Facebook(array(
-  'app_id'  => '247656848969786',
-  'app_secret' => 'e32643de860ef7f93289dd25b4daabc0',
+  'app_id'  => '',
+  'app_secret' => '',
   'default_graph_version' => 'v2.4'
 ));
 
