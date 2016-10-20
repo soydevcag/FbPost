@@ -7,7 +7,10 @@ $(document).ready(function(){
 
 	// Grab the files and set them to our variable
 	function prepareUpload(event) {
-	  $("#uploader").LoadingOverlay("show");
+	  $("#uploader").LoadingOverlay("show",{
+		image       : "",
+	    fontawesome : "fa fa-refresh fa-spin"
+	});
 	  files = event.target.files;
 	  uploadFiles(event);
 	}
@@ -16,8 +19,6 @@ $(document).ready(function(){
 	function uploadFiles(event) {
 	    event.stopPropagation(); // Stop stuff happening
 	    event.preventDefault(); // Totally stop stuff happening
-	
-		    // START A LOADING SPINNER HERE
 		
 			// Create a formdata object and add the files
 		    var data = new FormData();

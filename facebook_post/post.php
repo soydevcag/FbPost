@@ -10,8 +10,8 @@
 	require_once __DIR__ .'/Facebook/autoload.php';
 			
 		$fb = new Facebook\Facebook(array(
-		  'app_id'  => '247656848969786',
-		  'app_secret' => 'e32643de860ef7f93289dd25b4daabc0',
+		  'app_id'  => '',
+		  'app_secret' => '',
 		  'default_graph_version' => 'v2.4'
 		));
 		
@@ -21,10 +21,10 @@
 			$accessToken = $helper->getAccessToken();
 			$linkData = [
 				'source' => $fb->fileToUpload($_SESSION['photoPath']), 
-				'message' => '#NoSeFijeEstoyDesarrollando'
+				'message' => '#AsíDeFácilConiShop'
 			];
 			$petition = $fb->post('/me/photos', $linkData, $accessToken);
-			$_SESSION['msg'] = 'True.';
+			$_SESSION['msg'] = 'True';
 		} catch (Facebook\Exceptions\FacebookResponseException $e) {
 			// When Graph returns an error
 			$_SESSION['msg'] = 'Debes aceptar los permisos'; //. $e->getMessage();
@@ -40,6 +40,11 @@
 		unset($_SESSION['imageFileType']);
 		unset($_SESSION['tmp_name']);
 		unset($_SESSION['size']);
-		
-	header('Location: index.php');
+	    echo "<script>
+	   		window.onunload = function() {
+           		window.opener.location ='http://serverlequar.com/fb/facebook_post/';
+            }
+	   		window.close();
+	   	    </script>";	
+	//header('Location: index.php');
 ?>

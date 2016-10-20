@@ -25,12 +25,15 @@ $loginUrl = $helper->getLoginUrl('http://serverlequar.com/fb/facebook_post/post.
 </div>
 <form id="uploadPhoto" method="post" enctype="multipart/form-data">
 	<input type="file" id="filePhoto" accept="image/x-png, image/jpeg, image/jpg" required>
-	<a id="buttonShare" href="<?php echo $loginUrl; ?>" style="display: none;">Compartir en Facebook</a>
+	<a id="buttonShare" onclick=" window.open('<?php echo $loginUrl; ?>','',' scrollbars=yes,menubar=no,width=600, height=550, resizable=false,toolbar=no,location=no,status=no')" href="#" style="display: none;">Compartir en Facebook</a>
 </form>
 	<?php 
 		if(isset($_SESSION['msg'])) { 
-			echo $_SESSION['msg']; 
-			echo '<img src="'.$_SESSION['photoPath'].'" width="400" height="350">';
+			if($_SESSION['msg']=='True'){
+				echo '<img src="'.$_SESSION['photoPath'].'" width="400" height="350">';
+			}else{
+				echo $_SESSION['msg'];
+			}
 			unset($_SESSION['photoPath']);
 			unset($_SESSION['msg']); 
 		} 
@@ -41,6 +44,7 @@ $loginUrl = $helper->getLoginUrl('http://serverlequar.com/fb/facebook_post/post.
 	#filePhoto{display:none;}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js" charset="utf-8"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="js/DragNDrop.js"></script>
 <script src="js/upload.js"></script>
 <script src="js/loadingoverlay.min.js"></script>
