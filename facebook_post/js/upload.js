@@ -7,6 +7,7 @@ $(document).ready(function(){
 
 	// Grab the files and set them to our variable
 	function prepareUpload(event) {
+	  $("#uploader").LoadingOverlay("show");
 	  files = event.target.files;
 	  uploadFiles(event);
 	}
@@ -16,7 +17,7 @@ $(document).ready(function(){
 	    event.stopPropagation(); // Stop stuff happening
 	    event.preventDefault(); // Totally stop stuff happening
 	
-	    // START A LOADING SPINNER HERE
+		    // START A LOADING SPINNER HERE
 		
 			// Create a formdata object and add the files
 		    var data = new FormData();
@@ -34,7 +35,7 @@ $(document).ready(function(){
 		        contentType: false, 
 		    }).done(function(msg) {
 			    if( msg.success ){
-				    alert('Subio imagen');
+				    $("#uploader").LoadingOverlay("hide");
 				    $('#buttonShare').fadeIn('slow');
 			    } else {
 				    alert(msg);

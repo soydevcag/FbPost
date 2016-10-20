@@ -21,8 +21,7 @@ $permissions = ['publish_actions'];
 $loginUrl = $helper->getLoginUrl('http://serverlequar.com/fb/facebook_post/post.php', $permissions);
 ?>
 <div id="uploader" onclick="$('#filePhoto').click()">
-    <center>Click aqui o arrastra tu imagen</center>
-    <img src="" width="400" height="350" style="border: none;">
+	<img src="img/default.png" style="border: none;" width="100%" height="100%">
 </div>
 <form id="uploadPhoto" method="post" enctype="multipart/form-data">
 	<input type="file" id="filePhoto" accept="image/x-png, image/jpeg, image/jpg" required>
@@ -31,14 +30,17 @@ $loginUrl = $helper->getLoginUrl('http://serverlequar.com/fb/facebook_post/post.
 	<?php 
 		if(isset($_SESSION['msg'])) { 
 			echo $_SESSION['msg']; 
+			echo '<img src="'.$_SESSION['photoPath'].'" width="400" height="350">';
+			unset($_SESSION['photoPath']);
 			unset($_SESSION['msg']); 
 		} 
 	?>
 <style type="text/css" media="screen">
-	#uploader {position:relative; overflow:hidden; width:400px; height:350px; background:transparent; border:2px dashed #e8e8e8;cursor:pointer;padding:5px;color:#555;font-family:'Segoe UI';font-weight:bold;}
+	#uploader {position:relative; overflow:hidden; width:400px; height:350px; background:transparent; border:2px dashed #cbcbcb;cursor:pointer;padding:5px;color:#555;font-family:'Segoe UI';font-weight:bold;}
 	#uploader:hover{color:#000; border:2px dashed #000}
 	#filePhoto{display:none;}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js" charset="utf-8"></script>
 <script src="js/DragNDrop.js"></script>
 <script src="js/upload.js"></script>
+<script src="js/loadingoverlay.min.js"></script>
